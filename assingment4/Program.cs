@@ -14,15 +14,18 @@ namespace assingment4
         ArrayList Beowulf;
         static void Main(string[] args)
         {
-
             Program p = new Program();
             p.Beowulf = new ArrayList();
             p.ReadTextFiles();
-
-            p.ReadTextFiles();
             p.WordCounter();
             p.Wordfinder();
+            p.Wordskipper();
             Console.ReadLine();
+        }
+
+        private void Wordskipper()
+        {
+            throw new NotImplementedException();
         }
 
         public void Run()
@@ -42,7 +45,7 @@ namespace assingment4
                 }
                 file.Close();
                 Console.WriteLine($"File has {counter} lines.");
-                counter = File.ReadLines("U:/Users/732152/New folder/New folder/assingment4/assingment4/Beowulf.txt").Count();
+                counter = File.ReadLines("Beowulf.txt").Count();
                 Console.WriteLine("\n This file contains " + counter + " lines");
             }
         }
@@ -59,7 +62,6 @@ namespace assingment4
             return countSpaces;
 
         }
-
         public void CountLinesReader()
         {
             long lineCounter = 0;
@@ -72,10 +74,8 @@ namespace assingment4
                 Console.WriteLine("\n This file contains " + lineCounter + " lines");
             }
         }
-
         public void WordCounter()
         {
-
             StreamReader reader = new StreamReader("U:/Users/732152/New folder/New folder/assingment4/assingment4/Beowulf.txt");
             string script = reader.ReadToEnd();
             var text = script.Trim();
@@ -90,10 +90,6 @@ namespace assingment4
                 while (index < text.Length && char.IsWhiteSpace(text[index]))
                     index++;
             }
-
-            Console.WriteLine("\n This file contains " + wordCount + " lines");
-
-
             Console.WriteLine("\n This file contains " + wordCount + " words");
 
         }
@@ -106,11 +102,35 @@ namespace assingment4
                 {
                     w++;
                 }
-
-
             }
             Console.WriteLine("\n This file contains " + w);
         }
     }
+    public void Wordskipper()
+    {
+        int w = 0;
+        int x = 0;
+        int y = 0;
+        foreach (var line in File.ReadAllLines("U:/Users/732152/New folder/New folder/assingment4/assingment4/Beowulf.txt"))
+        {
+            if (line.Contains("fare"))
+            {
+                w++;
+            }
+
+        }
+        foreach (var line in File.ReadAllLines("U:/Users/732152/New folder/New folder/assingment4/assingment4/Beowulf.txt"))
+        {
+            if (line.Contains("war") && line.Contains("fare"))
+            {
+                x++;
+            }
+
+        }
+        y = w - x;
+        Console.WriteLine("\n This file contains " + y);
+    }
+
+}
 
 }
