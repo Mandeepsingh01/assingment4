@@ -17,8 +17,8 @@ namespace assingment4
         {
             Program p = new Program();
             p.Beowulf = new ArrayList();
+            p.ReadTextFiles();
             p.CountLinesReader();
-            p.WordCounter();
             Console.ReadLine();
 
         }
@@ -67,31 +67,6 @@ namespace assingment4
                 Console.WriteLine(lineCounter);
             }
         }
-        public void WordCounter()
-        {
-
-            StreamReader reader = new StreamReader("U:/Users/732152/New folder/732152_assingment/732152_assingment/Beowulf.txt");
-            string script = reader.ReadToEnd();
-
-            var text = script.Trim();
-            int wordCount = 0, index = 0;
-
-            while (index < text.Length)
-            {
-                // check if current char is part of a word
-                while (index < text.Length && !char.IsWhiteSpace(text[index]))
-                    index++;
-
-                wordCount++;
-
-                // skip whitespace until next word
-                while (index < text.Length && char.IsWhiteSpace(text[index]))
-                    index++;
-            }
-
-            Console.WriteLine(wordCount);
-
-
-        }
     }
+
 }
